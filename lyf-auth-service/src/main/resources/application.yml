@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 112.124.12.211:8848
+  application:
+    name: lyf--auth-service
+
+  redis:
+    host: 112.124.12.211
+    port: 6379
+
+server:
+  port: 20000

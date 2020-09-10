@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    alicloud:
+      sms:
+        host: http://dingxin.market.alicloudapi.com
+        path: /dx/sendSms
+        tpl_id: TP1711063
+        appcode: 4906fbfe930c4b898a420204ec33c119
+      oss:
+        endpoint: oss-cn-heyuan.aliyuncs.com
+      access-key: LTAI4FzW3DC7PFBu29X6dLM4
+      secret-key: RvaX1en6NP5pUwkhm8e3CYAdRpKQOl
+    nacos:
+      discovery:
+        server-addr: 112.124.12.211:8848
+
+  application:
+    name: lyf-third-party-service
+server:
+  port: 3000

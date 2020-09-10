@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 112.124.12.211:8848
+  application:
+    name: lyf-essearch
+server:
+  port: 9000

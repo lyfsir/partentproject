@@ -1,0 +1,69 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: lyf-food
+          uri: lb://lyf-food
+          predicates:
+            - Path=/api/food/**
+          filters:
+            - RewritePath=/api/food(?<segment>/?.*), $\{segment}
+
+        - id: lyf-topic
+          uri: lb://lyf-topic
+          predicates:
+            - Path=/api/topic/**
+          filters:
+            - RewritePath=/api/topic(?<segment>/?.*), $\{segment}
+
+
+        - id: lyf-autho-service
+          uri: lb://lyf--auth-service
+          predicates:
+            - Path=/api/sms/**
+          filters:
+            - RewritePath=/api/sms(?<segment>/?.*), $\{segment}
+
+        - id: lyf-third-party-service
+          uri: lb://lyf-third-party-service
+          predicates:
+            - Path=/api/renren/oss/**
+          filters:
+            - RewritePath=/api/renren/oss(?<segment>/?.*), $\{segment}
+
+        - id: lyf-ums
+          uri: lb://lyf-ums
+          predicates:
+            - Path=/api/ums/**
+          filters:
+            - RewritePath=/api/ums(?<segment>/?.*), $\{segment}
+
+
+
+        - id: lyf-essearch
+          uri: lb://lyf-essearch
+          predicates:
+            - Path=/api/ess/**
+          filters:
+            - RewritePath=/api/ess(?<segment>/?.*), $\{segment}
+
+
+        - id: renren-fast
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/renren/**
+          filters:
+            - RewritePath=/api/renren(?<segment>/?.*), /renren-fast/$\{segment}
+    nacos:
+      discovery:
+        server-addr: 112.124.12.211:8848
+  application:
+    name: lyf-gateway
+
+server:
+  port: 88
+
+my:
+  jwt:
+    skip-auth-urls:
+    - /api/ums/ums/umsmember/login/ums
